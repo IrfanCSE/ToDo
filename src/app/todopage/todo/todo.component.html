@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<div class="page-content page-container" id="page-content">
+  <div class="padding">
+    <div class="row container d-flex justify-content-center">
+      <div class="col-lg-12">
+        <div class="card px-3">
+          <div class="card-body">
+            <h4 class="card-title">To-Do</h4>
+            <div class="add-items d-flex">
+              <input
+                [(ngModel)]="input"
+                type="text"
+                class="form-control todo-list-input"
+                placeholder="What do you need to do today?">
+                <button class="add btn btn-primary font-weight-bold todo-list-add-btn"
+                [hidden]="isEdit"
+                (click)="AddInput()">
+                  Add
+                </button>
+                <button class="add btn btn-primary font-weight-bold todo-list-add-btn"
+                [hidden]="!isEdit"
+                (click)="Update()">
+                  Update
+                </button>
+                <button class="add btn btn-primary font-weight-bold"
+                [hidden]="!isEdit"
+                (click)="CancelUpdate()">
+                  Cancel
+                </button>
+            </div>
+            <div class="list-wrapper">
+              <ul class="d-flex flex-column-reverse todo-list">
+                <li *ngFor="let item of items">
+                  <div class="form-check">
+                    <label class="form-check-label">
+                      {{item}}
+                    </label>
+                  </div>
+                  <i (click)="Edit(item)"
+                  class="remove fa fa-edit"></i>
+                  <i (click)="Remove(item)"
+                  class="remove fa fa-trash"></i>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
